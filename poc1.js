@@ -64,7 +64,7 @@ function moveright(){
 let img = new Image();
 img.src = 'Green-Cap-Character-16x18.png';
 img.onload = function() {
-  init();
+    init();
 };
 
 let canvas = document.querySelector('canvas');
@@ -77,9 +77,9 @@ const scaledWidth = scale * width;
 const scaledHeight = scale * height;
 
 function drawFrame(frameX, frameY, canvasX, canvasY) {
-  ctx.drawImage(img,
-                frameX * width, frameY * height, width, height,
-                canvasX, canvasY, scaledWidth, scaledHeight);
+    ctx.drawImage(img,
+        frameX * width, frameY * height, width, height,
+        canvasX, canvasY, scaledWidth, scaledHeight);
 }
 
 document.getElementById("lopen").addEventListener("mousedown", step);
@@ -90,25 +90,26 @@ let currentLoopIndex = 0;
 let frameCount = 0;
 
 function step() {
-  frameCount++;
-  console.log(frameCount)
+    frameCount++;
+    console.log(frameCount)
 
-  if (frameCount < 15) {
-    window.requestAnimationFrame(step);
-    return;
-  }
-  frameCount = 0;
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  drawFrame(cycleLoop[currentLoopIndex], 0, 0, 0);
-  currentLoopIndex++;
-  if (currentLoopIndex >= cycleLoop.length) {
-    currentLoopIndex = 0;
-  }
-  
-
+    if (frameCount < 15) {
+        window.requestAnimationFrame(step);
+        return;
+    }
+    frameCount = 0;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawFrame(cycleLoop[currentLoopIndex], 0, 0, 0);
+    currentLoopIndex++;
+    if (currentLoopIndex >= cycleLoop.length) {
+        currentLoopIndex = 0;
+    }
 }
 
 function init() {
-  window.requestAnimationFrame(step);
+    window.requestAnimationFrame(step);
 }
 
+function holdbutton() {
+    document.getElementById("lopen").addEventListener("mousedown", step);
+}

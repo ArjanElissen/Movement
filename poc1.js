@@ -82,7 +82,7 @@ function drawFrame(frameX, frameY, canvasX, canvasY) {
         canvasX, canvasY, scaledWidth, scaledHeight);
 }
 
-document.getElementById("lopen").addEventListener("mousedown", step);
+document.getElementById("canvas").addEventListener("touchstart", step);
 
 
 const cycleLoop = [0, 1, 0, 2];
@@ -110,6 +110,3 @@ function init() {
     window.requestAnimationFrame(step);
 }
 
-function holdbutton() {
-    document.getElementById("lopen").addEventListener("mousedown", step);
-}

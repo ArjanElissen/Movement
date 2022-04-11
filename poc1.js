@@ -75,6 +75,9 @@ const width = 16;
 const height = 18;
 const scaledWidth = scale * width;
 const scaledHeight = scale * height;
+const cycleLoop = [0, 1, 0, 2];
+let currentLoopIndex = 0;
+let frameCount = 0;
 
 function drawFrame(frameX, frameY, canvasX, canvasY) {
     ctx.drawImage(img,
@@ -82,12 +85,13 @@ function drawFrame(frameX, frameY, canvasX, canvasY) {
         canvasX, canvasY, scaledWidth, scaledHeight);
 }
 
-document.getElementById("canvas").addEventListener("touchstart", step);
+document.getElementById("canvas").onpointerdown = check;
 
 
-const cycleLoop = [0, 1, 0, 2];
-let currentLoopIndex = 0;
-let frameCount = 0;
+function check() {
+  console.log('joejoe')
+}
+
 
 function step() {
     frameCount++;

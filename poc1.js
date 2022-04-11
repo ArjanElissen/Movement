@@ -87,7 +87,7 @@ let currentLoopIndex = 0;
 let frameCount = 0;
  
  
-document.getElementById("lopen").addEventListener("mousedown", step);
+document.getElementById("lopen").addEventListener("click", step);
  
 
 function step() {

@@ -87,7 +87,7 @@ let currentLoopIndex = 0;
 let frameCount = 0;
  
  
-document.getElementById("lopen").addEventListener("click", step);
+document.getElementById("lopen").addEventListener("touchstart", step);
  
 
 function step() {

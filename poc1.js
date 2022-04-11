@@ -81,13 +81,15 @@ function drawFrame(frameX, frameY, canvasX, canvasY) {
         frameX * width, frameY * height, width, height,
         canvasX, canvasY, scaledWidth, scaledHeight);
 }
- 
-document.getElementById("lopen").addEventListener("mousedown", step);
- 
+
 const cycleLoop = [0, 1, 0, 2];
 let currentLoopIndex = 0;
 let frameCount = 0;
  
+ 
+document.getElementById("lopen").addEventListener("mousedown", step);
+ 
+
 function step() {
     frameCount++;
     console.log(frameCount)
@@ -107,8 +109,4 @@ function step() {
  
 function init() {
     window.requestAnimationFrame(step);
-}
- 
-function holdbutton() {
-    document.getElementById("lopen").addEventListener("mousedown", step);
 }

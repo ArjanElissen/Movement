@@ -66,37 +66,32 @@ img.src = 'Green-Cap-Character-16x18.png';
 img.onload = function() {
     init();
 };
-
+ 
 let canvas = document.querySelector('canvas');
 let ctx = canvas.getContext('2d');
-
+ 
 const scale = 2;
 const width = 16;
 const height = 18;
 const scaledWidth = scale * width;
 const scaledHeight = scale * height;
-const cycleLoop = [0, 1, 0, 2];
-let currentLoopIndex = 0;
-let frameCount = 0;
-
+ 
 function drawFrame(frameX, frameY, canvasX, canvasY) {
     ctx.drawImage(img,
         frameX * width, frameY * height, width, height,
         canvasX, canvasY, scaledWidth, scaledHeight);
 }
-
-document.getElementById("canvas").onpointerdown = check;
-
-
-function check() {
-  console.log('joejoe')
-}
-
-
+ 
+document.getElementById("lopen").addEventListener("mousedown", step);
+ 
+const cycleLoop = [0, 1, 0, 2];
+let currentLoopIndex = 0;
+let frameCount = 0;
+ 
 function step() {
     frameCount++;
     console.log(frameCount)
-
+ 
     if (frameCount < 15) {
         window.requestAnimationFrame(step);
         return;
@@ -109,8 +104,11 @@ function step() {
         currentLoopIndex = 0;
     }
 }
-
+ 
 function init() {
     window.requestAnimationFrame(step);
 }
-
+ 
+function holdbutton() {
+    document.getElementById("lopen").addEventListener("mousedown", step);
+}

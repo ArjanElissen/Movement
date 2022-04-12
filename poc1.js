@@ -69,6 +69,7 @@ img.onload = function() {
  
 let canvas = document.querySelector('canvas');
 let ctx = canvas.getContext('2d');
+let touch;
  
 const scale = 2;
 const width = 16;
@@ -87,13 +88,15 @@ let currentLoopIndex = 0;
 let frameCount = 0;
  
  
-document.getElementById("canvas").addEventListener("touchstart", step);
- 
+document.getElementById("canvas").addEventListener("touchstart", function (){touch = true});
+document.getElementById("canvas").addEventListener("touchend", function (){touch = false});
 
-function step() {
-    frameCount++;
-    console.log(frameCount)
+
  
+function step() {
+
+  if (touch){
+    frameCount++; 
     if (frameCount < 15) {
         window.requestAnimationFrame(step);
         return;
@@ -105,8 +108,16 @@ function step() {
     if (currentLoopIndex >= cycleLoop.length) {
         currentLoopIndex = 0;
     }
+  }
+  else
+  {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawFrame(cycleLoop[0], 0, 0, 0);
+  }
+  window.requestAnimationFrame(step);
+
 }
  
 function init() {
-    window.requestAnimationFrame(step);
+  window.requestAnimationFrame(step);
 }

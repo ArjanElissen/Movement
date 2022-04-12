@@ -1,16 +1,3 @@
-/*#afbeelding{
-    position: absolute;
-    border: solid 1px black;
-    
-}
-
-.murderright{
-    content: url('murderright.jpg');
-}
-
-.murderleft{
-    content: url('murderleft.jpg');
-}*/
 canvas {
     border: 1px solid black;
   }

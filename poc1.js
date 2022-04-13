@@ -1,6 +1,6 @@
 //sprite bepalen en laden
 let img = new Image();
-img.src = 'Green-Cap-Character-16x18.png';
+img.src = 'lopen.png';
 img.onload = function() {
     init();
 };
@@ -10,9 +10,9 @@ let canvas = document.querySelector('canvas');
 let ctx = canvas.getContext('2d');
 let touch;
  
-const scale = 2;
-const width = 16;
-const height = 18;
+const scale = 1;
+const width = 255;
+const height = 255;
 const scaledWidth = scale * width;
 const scaledHeight = scale * height;
  
@@ -22,7 +22,9 @@ function drawFrame(frameX, frameY, canvasX, canvasY) {
         canvasX, canvasY, scaledWidth, scaledHeight);
 }
 
-const cycleLoop = [0, 1, 0, 2];
+//we hebben 26 frames voor het lopen
+const cycleLoop = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
+
 let currentLoopIndex = 0;
 let frameCount = 0;
  
@@ -36,13 +38,13 @@ function step() {
 
   if (touch){
     frameCount++; 
-    if (frameCount < 15) {
+    if (frameCount < 4) {
         window.requestAnimationFrame(step);
         return;
     }
     frameCount = 0;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawFrame(cycleLoop[currentLoopIndex], 0, 0, 0);
+    drawFrame(cycleLoop[currentLoopIndex], 0, 0, 0, 0);
     currentLoopIndex++;
     if (currentLoopIndex >= cycleLoop.length) {
         currentLoopIndex = 0;
@@ -53,6 +55,7 @@ function step() {
   {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawFrame(cycleLoop[0], 0, 0, 0);
+    currentLoopIndex = 0;
   }
   window.requestAnimationFrame(step);
 
